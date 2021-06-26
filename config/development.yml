@@ -1,0 +1,16 @@
+port: 3006
+db:
+  drv: pgx
+  host: localhost
+  port: 5432
+  name: url
+  user: postgres
+  password: 
+  ssl_enabled: false
+
+cors:
+  allow_origins:
+    - http://localhost:8080
+
+front_end:
+  base_url: 'http://localhost:8080'
