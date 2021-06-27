@@ -10,7 +10,7 @@ import (
 )
 
 type Config struct {
-	Port string
+	Port string `mapstructure:"PORT"`
 	DB   struct {
 		DRV        string
 		Host       string
