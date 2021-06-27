@@ -1,19 +1,18 @@
-port: CHANGE_ME
 db:
   drv: pgx
-  host: localhost
+  host: ec2-52-23-45-36.compute-1.amazonaws.com
   port: 5432
-  name: rea
-  user: rea
+  name: d9fsuo4nbdlatl
+  user: hcccldpmhqzstc
   password: CHANGE_ME
-  ssl_enabled: false
+  ssl_enabled: true
 
 cors:
   allow_origins:
-    - http://localhost:8080
+    - https://dry-falls-11924.herokuapp.com
 
 front_end:
-  base_url: http://localhost:8080
+  base_url: https://dry-falls-11924.herokuapp.com
   url_prefixes_to_match: 
-    - http://localhost:8080/
-    - localhost:8080/
+    - https://dry-falls-11924.herokuapp.com/
+    - dry-falls-11924.herokuapp.com/
