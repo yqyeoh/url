@@ -9,10 +9,10 @@ db:
 
 cors:
   allow_origins:
-    - https://dry-falls-11924.herokuapp.com
+    - https://polar-mountain-99143.herokuapp.com
 
 front_end:
-  base_url: https://dry-falls-11924.herokuapp.com
+  base_url: https://polar-mountain-99143.herokuapp.com
   url_prefixes_to_match: 
-    - https://dry-falls-11924.herokuapp.com/
-    - dry-falls-11924.herokuapp.com/
+    - https://polar-mountain-99143.herokuapp.com/
+    - polar-mountain-99143.herokuapp.com/
