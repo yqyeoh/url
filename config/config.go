@@ -18,7 +18,7 @@ type Config struct {
 		Name       string
 		User       string
 		Password   string
-		SSLEnabled bool
+		SSLEnabled bool `mapstructure:"ssl_enabled"`
 	} `mapstructure:"db"`
 	CORS struct {
 		AllowOrigins []string `mapstructure:"allow_origins"`
