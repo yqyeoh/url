@@ -10,7 +10,8 @@ import (
 )
 
 type Config struct {
-	DB struct {
+	Port string
+	DB   struct {
 		DRV        string
 		Host       string
 		Port       int
