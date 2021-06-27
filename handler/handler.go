@@ -46,7 +46,7 @@ func (h Handler) FromJSON(dest interface{}, req *http.Request) error {
 
 // ReplyError writes error to ResponseWriter
 func (h Handler) ReplyError(w http.ResponseWriter, statusCode int, message string) {
-	ReplyJSON(w, code, map[string]string{"error": message})
+	h.ReplyJSON(w, statusCode, map[string]string{"error": message})
 }
 
 // ReplyJSON marshals a struct to json
@@ -57,6 +57,12 @@ func (h Handler) ReplyJSON(w http.ResponseWriter, statusCode int, payload interf
 
 	if err := json.NewEncoder(w).Encode(payload); err != nil {
 		h.logger.Errorf("writing JSON to ResponseWriter failed on %T - error: %v", payload, err)
-		fmt.Fprintln(w, e.Error())
+		fmt.Fprintln(w, err.Error())
 	}
+}
+
+// Redirect to redirect to URL given
+func (h Handler) Redirect(w http.ResponseWriter, url string) {
+	w.Header().Set("Location", url)
+	w.WriteHeader(http.StatusFound)
 }

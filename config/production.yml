@@ -1,11 +1,11 @@
-port: 3006
+port: CHANGE_ME
 db:
   drv: pgx
   host: localhost
   port: 5432
   name: rea
   user: rea
-  password: rea
+  password: CHANGE_ME
   ssl_enabled: false
 
 cors:

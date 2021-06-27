@@ -3,6 +3,7 @@ package app
 import (
 	"context"
 	"math/rand"
+	"time"
 
 	"go.uber.org/zap"
 )
@@ -10,7 +11,8 @@ import (
 const codeLength = 7
 
 type Service interface {
-	FindOrCreateCode(ctx context.Context, url string) (string, error)
+	Create(ctx context.Context, url string) (string, error)
+	FindURLByCode(ctx context.Context, code string) (string, error)
 }
 
 type service struct {
@@ -18,24 +20,28 @@ type service struct {
 	logger *zap.SugaredLogger
 }
 
-func NewService(repo Repo, logger *zap.SugaredLogger) Service {
+func NewService(logger *zap.SugaredLogger, repo Repo) Service {
 	return service{
 		repo,
 		logger,
 	}
 }
 
-func (s service) FindOrCreateCode(ctx context.Context, url string) (string, error) {
+func (s service) Create(ctx context.Context, url string) (string, error) {
+	return s.repo.Create(ctx, randomCode(), url)
+}
 
-	return s.repo.FindOrCreateCode(ctx, randomCode(), url)
+func (s service) FindURLByCode(ctx context.Context, code string) (string, error) {
+	return s.repo.FindURLByCode(ctx, code)
 }
 
 func randomCode() string {
-	var letter = []rune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")
-
-	b := make([]rune, codeLength)
+	var seededRand *rand.Rand = rand.New(
+		rand.NewSource(time.Now().UnixNano()))
+	const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+	b := make([]byte, codeLength)
 	for i := range b {
-		b[i] = letter[rand.Intn(len(letter))]
+		b[i] = charset[seededRand.Intn(len(charset))]
 	}
 	return string(b)
 }

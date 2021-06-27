@@ -6,4 +6,4 @@ CREATE TABLE urls (
     update_date      TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT NOW()
 );
 CREATE UNIQUE INDEX ON urls (code);
-CREATE UNIQUE INDEX ON urls (url);
+CREATE INDEX ON urls (url);

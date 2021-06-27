@@ -24,7 +24,8 @@ type Config struct {
 		AllowOrigins []string `mapstructure:"allow_origins"`
 	} `mapstructure:"cors"`
 	FrontEnd struct {
-		BaseURL string `mapstructure:"base_url"`
+		BaseURL            string   `mapstructure:"base_url"`
+		URLPrefixesToMatch []string `mapstructure:"url_prefixes_to_match"`
 	} `mapstructure:"front_end"`
 }
 

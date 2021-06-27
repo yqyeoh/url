@@ -26,7 +26,7 @@ func main() {
 	defer logger.Sync()
 	log := logger.Sugar()
 
-	db, err = sqlx.Open(conf.DB.DRV, conf.ConnectionString())
+	db, err := sqlx.Open(conf.DB.DRV, conf.ConnectionString())
 	if err != nil {
 		log.Fatalf("opening database failed", err)
 	}
@@ -35,8 +35,8 @@ func main() {
 	apiRouter := mux.NewRouter()
 
 	appRepo := app.NewRepo(db)
-	appService := appService(log, appRepo)
-	app.NewHandler(log, appService, conf).AddRoutes(apiRouter)
+	appService := app.NewService(log, appRepo)
+	app.NewHandler(log, appService, *conf).AddRoutes(apiRouter)
 
 	corsInstance := cors.New(cors.Options{
 		AllowedOrigins:     conf.CORS.AllowOrigins,
