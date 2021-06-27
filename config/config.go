@@ -33,6 +33,7 @@ type Config struct {
 func Load() (*Config, error) {
 	vpr := viper.New()
 	vpr.SetDefault("mode", "development")
+	vpr.SetDefault("PORT", 3006)
 	vpr.AutomaticEnv()
 	vpr.SetEnvKeyReplacer(strings.NewReplacer(".", "_"))
 	vpr.SetConfigType("yaml")
@@ -51,6 +52,8 @@ func Load() (*Config, error) {
 	if err := vpr.Unmarshal(cfg); err != nil {
 		return nil, errors.Wrap(err, "cannot unmarshal configuration")
 	}
+
+	fmt.Printf("config %+v \n", cfg)
 
 	return cfg, nil
 }
