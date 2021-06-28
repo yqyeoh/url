@@ -16,6 +16,7 @@ require (
 	github.com/pkg/errors v0.9.1
 	github.com/rs/cors v1.7.0
 	github.com/shopspring/decimal v1.2.0 // indirect
+	github.com/stretchr/testify v1.7.0
 	go.uber.org/zap v1.17.0
 	gopkg.in/go-playground/assert.v1 v1.2.1 // indirect
 )
