@@ -1,0 +1,15 @@
+version: '3.7'
+services:
+    postgres:
+        image: postgres:latest
+        restart: always
+        environment:
+          - POSTGRES_DB=rea
+          - POSTGRES_USER=rea
+          - POSTGRES_PASSWORD=rea
+        ports:
+          - "5433:5432"
+        volumes: 
+          - ./postgres-data:/var/lib/postgresql/data
+          - ./db/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+          - ./db/seed.sql:/docker-entrypoint-initdb.d/seed.sql
