@@ -17,8 +17,6 @@ services:
     api:
         build: .
         restart: always
-        expose:
-          - 3006
         ports:
           - 3006:3006
         links:

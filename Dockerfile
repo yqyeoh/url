@@ -14,11 +14,8 @@ FROM alpine:3.13 AS final
 
 WORKDIR /app
 COPY --from=builder /etc/passwd /etc/passwd
-COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 COPY --from=builder /build/url /app/url
 COPY config /app/config
-
-EXPOSE 3006
 
 USER app-user
 ENTRYPOINT ["/app/url"]

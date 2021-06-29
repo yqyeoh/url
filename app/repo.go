@@ -4,7 +4,6 @@ import (
 	"context"
 	"database/sql"
 	"errors"
-	"fmt"
 
 	"github.com/jmoiron/sqlx"
 )
@@ -29,7 +28,6 @@ func (r repo) Create(ctx context.Context, randomCode, url string) (string, error
 		urls (code, url)
 		VALUES ($1, $2)
 		RETURNING code`
-	fmt.Println("randomCode", randomCode)
 	_, err := r.db.ExecContext(ctx, query, randomCode, url)
 
 	return randomCode, err

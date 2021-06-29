@@ -53,8 +53,6 @@ func Load() (*Config, error) {
 		return nil, errors.Wrap(err, "cannot unmarshal configuration")
 	}
 
-	fmt.Printf("config %+v \n", cfg)
-
 	return cfg, nil
 }
 
