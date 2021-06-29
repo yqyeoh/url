@@ -9,7 +9,7 @@ import (
 	"github.com/asaskevich/govalidator"
 	"github.com/gorilla/mux"
 	"github.com/yqyeoh/url/config"
-	"github.com/yqyeoh/url/handler"
+	"github.com/yqyeoh/url/platform/handler"
 	"go.uber.org/zap"
 )
 
